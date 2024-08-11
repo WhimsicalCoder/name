@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css">
+    <title>Naming Conventions</title>
+</head>
+<body>
+
+    <div id="container">
+
+        <div class="dropdowns">
+            
+            <h1>Campaign</h1>
+            <div class="select-menu">
+                <div class="select-btn">
+                    <label for="account-client">Account/Client:</label>
+                    <span class="sBtn-text" id="account-client" name="account-client">Select your option</span>
+                    <i class="bx bx-chevron-down"></i>
+                </div>
+                <ul class="options">
+                    </ul>
+            </div>
+
+            <div class="select-menu">
+                <div class="select-btn">
+                    <label for="campaign-candidate">Campaign/Candidate:</label>
+                    <input type="text" id="campaign-candidate" name="campaign-candidate">
+                </div>
+            </div>
+
+            <div class="select-menu">
+                <div class="select-btn">
+                    <label for="state">State:</label>
+                    <input type="text" id="state" name="state"> 
+                </div>
+            </div>
+
+            </div>
+
+            <div class="select-menu">
+                <div class="select-btn">
+                    <label for="start-date">Start Date:</label>
+                    <input type="text" id="start-date" name="start-date"> 
+                </div>
+            </div>
+
+            <div class="select-menu">
+                <div class="select-btn">
+                    <label for="end-date">End Date:</label>
+                    <input type="text" id="end-date" name="end-date"> 
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button class="button" onclick="generateCName()">Generate Campaign Name</button>
+                <button class="button" onclick="resetCForm()">Reset</button>
+            </div>
+
+        </div>
+
+        
+        <div class="dropdowns">
+
+            <h1>Ad Group Name</h1>
+            <div class="select-menu">
+                <div class="select-btn">
+                    <label for="account-client">Account/Client:</label>
+                    <span class="sBtn-text" id="account-client-ad" name="account-client">Select your option</span>
+                    <i class="bx bx-chevron-down"></i>
+                </div>
+                <ul class="options">
+                    </ul>
+            </div>
+
+            <div class="select-menu">
+                <div class="select-btn">
+                    <label for="campaign-candidate">Campaign/Candidate:</label>
+                    <input type="text" id="campaign-candidate-ad" name="campaign-candidate">
+                </div>
+            </div>
+
+            <div class="select-menu">
+                <div class="select-btn">
+                    <label for="state">State:</label>
+                    <input type="text" id="state-ad" name="state"> 
+                </div>
+            </div>
+
+            <div class="select-menu">
+                <div class="select-btn">
+                    <label for="start-date">Start Date:</label>
+                    <input type="text" id="start-date-ad" name="start-date"> 
+                </div>
+            </div>
+
+            <div class="select-menu">
+                <div class="select-btn">
+                    <label for="end-date">End Date:</label>
+                    <input type="text" id="end-date-ad" name="end-date"> 
+                </div>
+            </div>
+
+            <div class="buttons">
+                <button class="button" onclick="generateAdGroupName()">Generate Ad Group Name</button>
+                <button class="button" onclick="resetAdForm()">Reset</button>
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <div id="name-list-modal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">&times;</span>
+            <h2>Name</h2>
+            <ul id="name-list"></ul>
+        </div>
+    </div>
+    
+
+    <script src="main.js"></script>
+</body>
+</html>
+
+
+
