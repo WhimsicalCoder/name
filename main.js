@@ -1,71 +1,192 @@
-let campaignNames = [];
+/* ===== Google Font Import - Poppins ===== */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600&display=swap');
 
-function generateCName() {
-    const accountClient = document.getElementById('account-client').innerText;
-    const campaignCandidate = document.getElementById('campaign-candidate').value;
-    const state = document.getElementById('state').value; // Get value directly from the input box
-    const office = document.getElementById('office').value;
-    const aedmsSdems = document.getElementById('aedms-sdems').value;
-    const startDate = document.getElementById('start-date').value;
-    const endDate = document.getElementById('end-date').value;
-    const year = document.getElementById('year').value;
-
-    const fullName = [
-        accountClient,
-        campaignCandidate,
-        state,
-        office,
-        aedmsSdems,
-        startDate,
-        endDate,
-        year
-    ].filter(Boolean).join('_');
-
-    if (fullName) {
-        campaignNames.push(fullName);
-    }
-
-    displayNames();
-    openModal();
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body{
+    background: #E3F2FD;
 }
 
-// ... (rest of your code)
-
-function generateAdGroupName() {
-    const accountClientAd = document.getElementById('account-client-ad').innerText;
-    const campaignCandidateAd = document.getElementById('campaign-candidate-ad').value;
-    const stateAd = document.getElementById('state-ad').value;  // Get value directly from the input box
-    const district = document.getElementById('district').value;
-    const startDateAd = document.getElementById('start-date-ad').value;
-    const endDateAd = document.getElementById('end-date-ad').value;
-    const platform = document.getElementById('platform').innerText;
-    const mediaType = document.getElementById('media-type').innerText;
-    const cpm = document.getElementById('cpm').value;
-    const targetingType = document.getElementById('targeting-type').innerText;
-    const dataSource = document.getElementById('data-source').innerText;
-    const audience = document.getElementById('audience').value;
-
-    const fullAdGroupName = [
-        accountClientAd,
-        campaignCandidateAd,
-        stateAd,
-        district,
-        startDateAd,
-        endDateAd,
-        platform,
-        mediaType,
-        cpm,
-        targetingType,
-        dataSource,
-        audience
-    ].filter(Boolean).join('_');
-
-    if (fullAdGroupName) {
-        campaignNames.push(fullAdGroupName);
-    }
-
-    displayNames();
-    openModal();
+#container {
+    display: flex;
+    margin: 20px 35px;
 }
 
-// ... (rest of your code)
+#container h1, h2 {
+    text-align: center;
+}
+
+.dropdowns{
+    width: 800px;
+    margin: 0px auto;
+    padding-top: 20px;
+    flex: 1;
+    justify-content: space-around;
+}
+
+label, span {
+    flex: 1;
+}
+
+input {
+    margin: 0 10px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+    padding: 2px 5px;
+    width: 400px;
+}
+
+.dropdowns .select-menu {
+    position: relative;
+    margin: 2em;
+}
+
+.select-menu .select-btn{
+    display: flex;
+    height: 55px;
+    background: #fff;
+    padding: 20px;
+    font-size: .7rem;
+    font-weight: 400;
+    border-radius: 8px;
+    align-items: center;
+    cursor: pointer;
+    justify-content: space-between;
+    box-shadow: 0 0 5px rgba(0,0,0,0.1);
+}
+.select-btn i{
+    font-size: 25px;
+    transition: 0.3s;
+}
+.select-menu.active .select-btn i{
+    transform: rotate(-180deg);
+}
+.select-menu .options{
+    position: relative;
+    padding: 20px;
+    margin-top: 10px;
+    border-radius: 8px;
+    background: #fff;
+    box-shadow: 0 0 3px rgba(0,0,0,0.1);
+    display: none;
+}
+.select-menu.active .options{
+    display: block;
+}
+.options .option {
+    display: flex;
+    height: 28px;
+    cursor: pointer;
+    padding: 0 16px;
+    border-radius: 8px;
+    align-items: center;
+    background: #fff;
+}
+.options .option:hover{
+    background: #F2F2F2;
+}
+.option i{
+    font-size: 25px;
+    margin-right: 12px;
+}
+.option .option-text {
+    font-size: 12px;
+    color: #333;
+}
+
+.buttons {
+    width: 420px;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    color: white;
+    padding: 30px 40px;
+    border-radius: 15px;
+    margin: 0 auto;
+    top: 70%;
+    left: 40%;
+    /* position: absolute; */
+}
+
+.container {
+    width: auto;
+    background: transparent;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 10px rgba(0, 0, 0, .5);
+    color: #333;
+    padding: 30px 40px;
+    border-radius: 15px;
+    margin: 0 auto;
+    top: 50%;
+    left: 35rem;
+    position: absolute;
+    text-align: center;
+}
+
+.button{
+    width: 100%;
+    height: 45px;
+    background: white;
+    border: none;
+    outline: none;
+    border-radius: 40px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+    cursor: pointer;
+    font-size: 16px;
+    color: #333;
+    font-weight: 600;
+
+    padding: 10px 20px;
+    margin: 5px;
+}
+
+.buttons button:hover {
+    background-color: #66a1e8;
+    color: #c6dbf6;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+    background-color: #fefefe;
+    margin: 15% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 3px;
+    width: 80%;
+    max-width: 1150px;
+    text-align: center;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+#name-list {
+    list-style-type: none;
+    padding: 0;
+}
